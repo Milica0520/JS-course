@@ -14,7 +14,15 @@ let button2 = $(".btn2");
 // button.css("background", " red");
 
 button2.on("click", function () {
-  console.log(textHeader.val(), textColor.val());
-  button2.after(`<h1>${textHeader.val()}</h1>`);
-  $("h1").css("color", textColor.val());
+  // console.log(textHeader.val(), textColor.val());
+  if (textHeader.val() != "") {
+    if (/^#[0-9A-F]{6}$/i.test(textColor.val())) {
+      button2.after(`<h1>${textHeader.val()}</h1>`);
+      $("h1").css("color", textColor.val());
+    } else {
+      alert("Enter a valid color.");
+    }
+  } else {
+    alert("Enter some text.");
+  }
 });
